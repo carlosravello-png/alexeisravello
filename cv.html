@@ -19,6 +19,7 @@
     {
       "@type": "Person",
       "@id": "https://alexeisravello.com/#person",
+      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://alexeisravello.com/#person"},
       "name": "Alexeis Alberto Ravello Joo",
       "givenName": "Alexeis Alberto",
       "familyName": "Ravello Joo",
@@ -142,6 +143,8 @@
     {"@type":"ScholarlyArticle","@id":"https://doi.org/10.63332/joph.v5i7.3111","headline":"Impact of Distance Power, Resilience and Psychological Empowerment on Police Performance in Peru","author":{"@id":"https://alexeisravello.com/#person"},"datePublished":"2025","isPartOf":{"@type":"Periodical","name":"Journal of Posthumanism","volumeNumber":"5","issueNumber":"7"},"pageStart":"2623","pageEnd":"2636","identifier":{"@type":"PropertyValue","propertyID":"DOI","value":"10.63332/joph.v5i7.3111"},"url":"https://doi.org/10.63332/joph.v5i7.3111"},
     {"@type":"ScholarlyArticle","@id":"https://doi.org/10.31876/rcs.v30i3.42694","headline":"Impacto de los programas de resocialización de centros penitenciarios femeninos latinoamericanos: revisión sistemática","author":{"@id":"https://alexeisravello.com/#person"},"datePublished":"2024","isPartOf":{"@type":"Periodical","name":"Revista de Ciencias Sociales","volumeNumber":"30","issueNumber":"3"},"pageStart":"527","pageEnd":"552","identifier":{"@type":"PropertyValue","propertyID":"DOI","value":"10.31876/rcs.v30i3.42694"},"url":"https://doi.org/10.31876/rcs.v30i3.42694"},
     {"@type":"ScholarlyArticle","@id":"https://doi.org/10.31876/rcs.v29i4.41268","headline":"Moderación de la cultura nacional entre el empoderamiento psicológico la resiliencia y el desempeño laboral en América Latina","author":{"@id":"https://alexeisravello.com/#person"},"datePublished":"2023","isPartOf":{"@type":"Periodical","name":"Revista de Ciencias Sociales","issn":"1315-9518","volumeNumber":"29","issueNumber":"4"},"pageStart":"444","pageEnd":"462","identifier":{"@type":"PropertyValue","propertyID":"DOI","value":"10.31876/rcs.v29i4.41268"},"url":"https://doi.org/10.31876/rcs.v29i4.41268"}
+  ,
+    {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Alexeis Alberto Ravello Joo", "item": "https://alexeisravello.com/"}, {"@type": "ListItem", "position": 2, "name": "Curriculum Vitae", "item": "https://alexeisravello.com/cv.html"}]}
   ]
 }
 </script>
@@ -268,6 +271,58 @@
     }
     .cred-card { grid-template-columns: 1fr; }
   }
+
+  /* ── STICKY SECTION TOC ─────────────────────────────────────────────────── */
+  .cv-toc {
+    position: sticky;
+    top: 57px;
+    z-index: 90;
+    background: rgba(250,250,248,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 0.5px solid var(--rule);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    gap: 0;
+  }
+  .cv-toc::-webkit-scrollbar { display: none; }
+  .cv-toc a {
+    display: inline-block;
+    padding: 10px 16px;
+    font-size: 11.5px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .cv-toc a:hover,
+  .cv-toc a.toc-active {
+    color: var(--violet-mid);
+    border-bottom-color: var(--violet-mid);
+  }
+
+  @media print {
+    nav, .cv-toc { display: none !important; }
+    body { background: white; font-size: 11pt; color: #000; }
+    .page-header { padding: 24pt 0 16pt; border-bottom: 0.5pt solid #ccc; }
+    .page-title { font-size: 20pt; color: #1A0F3C; }
+    .cv-body { padding: 16pt 0 0; max-width: 100%; }
+    .cv-section { margin-bottom: 20pt; break-inside: avoid; }
+    .cv-section-title { font-size: 11pt; letter-spacing: 0.12em; border-bottom: 0.5pt solid #ccc; padding-bottom: 4pt; margin-bottom: 8pt; }
+    table { width: 100%; border-collapse: collapse; font-size: 9pt; }
+    td, th { padding: 4pt 6pt; border-bottom: 0.25pt solid #ddd; }
+    .pub-card { border-bottom: 0.25pt solid #ddd; padding: 8pt 0; }
+    .pub-doi { display: none; }
+    a { color: inherit; text-decoration: none; }
+    .cred-card, .doc-badge { display: none; }
+    footer { display: none; }
+  }
+
 </style>
 </head>
 <body>
@@ -284,6 +339,19 @@
     <li><a href="equivalencia-licenciatura-psicologia.html">Equivalencias</a></li>
   </ul>
 </nav>
+
+<!-- STICKY TOC -->
+<div class="cv-toc" id="cv-toc">
+  <a href="#datos">Datos</a>
+  <a href="#resumen">Resumen</a>
+  <a href="#formacion">Formación</a>
+  <a href="#docencia">Docencia</a>
+  <a href="#experiencia">Experiencia</a>
+  <a href="#publicaciones">Publicaciones</a>
+  <a href="#idiomas">Idiomas</a>
+  <a href="#membresias">Membresías</a>
+  <a href="#especializaciones">Diplom.</a>
+</div>
 
 <header class="page-header">
   <div class="page-eyebrow">
@@ -663,6 +731,28 @@
 </footer>
 
 <script>
+
+  // Sticky TOC active section highlight
+  (function(){
+    var sections = document.querySelectorAll('.cv-section[id]');
+    var tocLinks = document.querySelectorAll('.cv-toc a');
+    var offset = 120;
+    function updateToc(){
+      var scrollY = window.scrollY;
+      var current = '';
+      sections.forEach(function(s){
+        if(scrollY >= s.offsetTop - offset) current = s.id;
+      });
+      tocLinks.forEach(function(a){
+        a.classList.toggle('toc-active', a.getAttribute('href') === '#'+current);
+        if(a.getAttribute('href') === '#'+current){
+          a.scrollIntoView({block:'nearest', inline:'center', behavior:'smooth'});
+        }
+      });
+    }
+    window.addEventListener('scroll', updateToc, {passive:true});
+    updateToc();
+  })();
   // Hamburger: cerrar al hacer click afuera o en un enlace
   document.querySelectorAll('.hamburger').forEach(function(btn){
     btn.addEventListener('click', function(e){ e.stopPropagation(); this.closest('nav').classList.toggle('nav-open'); });
