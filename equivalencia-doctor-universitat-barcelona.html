@@ -148,6 +148,7 @@
     color: var(--violet-mid); text-decoration: none; transition: background 0.2s;
   }
   .pdf-badge:hover { background: #d6cef0; }
+  @media (max-width: 600px) { .pdf-badge { display: flex; width: 100%; justify-content: center; box-sizing: border-box; font-size: 14px; padding: 14px 20px; border-radius: 8px; margin-top: 16px; } }
 
   .doc-body { max-width: 860px; margin: 0 auto; padding: 56px 48px 96px; }
   .doc-section { margin-bottom: 48px; }
@@ -234,7 +235,7 @@
 
 <nav>
   <a class="nav-monogram" href="https://alexeisravello.com">ARJ</a>
-  <button class="hamburger" aria-label="Menú" onclick="this.closest('nav').classList.toggle('nav-open')">
+  <button class="hamburger" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links">
@@ -457,5 +458,21 @@
   </p>
 </footer>
 
+<script>
+  // Hamburger: cerrar al hacer click afuera o en un enlace
+  document.querySelectorAll('.hamburger').forEach(function(btn){
+    btn.addEventListener('click', function(e){ e.stopPropagation(); this.closest('nav').classList.toggle('nav-open'); });
+  });
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('nav')) {
+      document.querySelectorAll('nav.nav-open').forEach(function(n){ n.classList.remove('nav-open'); });
+    }
+  });
+  document.querySelectorAll('.nav-links a, .nav-links-about a').forEach(function(a){
+    a.addEventListener('click', function(){
+      document.querySelectorAll('nav.nav-open').forEach(function(n){ n.classList.remove('nav-open'); });
+    });
+  });
+</script>
 </body>
 </html>

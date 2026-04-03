@@ -656,7 +656,7 @@
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-monogram">ARJ</a>
-  <button class="hamburger" aria-label="Menú" onclick="this.closest('nav').classList.toggle('nav-open')">
+  <button class="hamburger" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links-about">
@@ -888,5 +888,21 @@
   </span>
 </div>
 
+<script>
+  // Hamburger: cerrar al hacer click afuera o en un enlace
+  document.querySelectorAll('.hamburger').forEach(function(btn){
+    btn.addEventListener('click', function(e){ e.stopPropagation(); this.closest('nav').classList.toggle('nav-open'); });
+  });
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('nav')) {
+      document.querySelectorAll('nav.nav-open').forEach(function(n){ n.classList.remove('nav-open'); });
+    }
+  });
+  document.querySelectorAll('.nav-links a, .nav-links-about a').forEach(function(a){
+    a.addEventListener('click', function(){
+      document.querySelectorAll('nav.nav-open').forEach(function(n){ n.classList.remove('nav-open'); });
+    });
+  });
+</script>
 </body>
 </html>

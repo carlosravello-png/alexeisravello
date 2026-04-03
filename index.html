@@ -570,6 +570,8 @@
     transition: background 0.2s;
   }
   .pub-doi:hover { background: var(--cambridge-light); color: white; }
+  /* Make pub-doi links bolder and easier to tap */
+  .pub-doi { font-weight: 500; letter-spacing: 0.02em; padding: 9px 18px; }
   .pub-stat { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 4px; }
 
   /* Thesis card */
@@ -760,6 +762,9 @@
     .research-grid { grid-template-columns: 1fr; }
     .credentials-grid { grid-template-columns: repeat(2, 1fr); }
     footer { flex-direction: column; gap: 8px; text-align: center; }
+    .pub-meta { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .pub-doi { display: block; width: 100%; text-align: center; padding: 12px 16px; font-size: 14px; border-radius: 8px; box-sizing: border-box; }
+    .pub-stat { display: none; }
     .research-section { padding: 64px 0; }
     .research-inner { padding: 0 24px; }
     .credentials-inner { padding: 0 24px; }
@@ -772,7 +777,7 @@
 <!-- NAVIGATION -->
 <nav id="navbar">
   <div class="nav-monogram">ARJ</div>
-  <button class="hamburger" aria-label="Menú" onclick="this.closest('nav').classList.toggle('nav-open')">
+  <button class="hamburger" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links">
@@ -1187,6 +1192,21 @@
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Hamburger: cerrar al hacer click afuera o en un enlace
+  document.querySelectorAll('.hamburger').forEach(function(btn){
+    btn.addEventListener('click', function(e){ e.stopPropagation(); this.closest('nav').classList.toggle('nav-open'); });
+  });
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('nav')) {
+      document.querySelectorAll('nav.nav-open').forEach(function(n){ n.classList.remove('nav-open'); });
+    }
+  });
+  document.querySelectorAll('.nav-links a, .nav-links-about a').forEach(function(a){
+    a.addEventListener('click', function(){
+      document.querySelectorAll('nav.nav-open').forEach(function(n){ n.classList.remove('nav-open'); });
+    });
   });
 </script>
 </body>
