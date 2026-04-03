@@ -29,7 +29,9 @@
       "url": "https://alexeisravello.com",
       "sameAs": [
         "https://orcid.org/0000-0003-4001-0142",
-        "https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=0000-0003-4001-0142"
+        "https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=0000-0003-4001-0142",
+        "https://www.linkedin.com/in/alexis-ravello-07813127/",
+        "https://www.wikidata.org/wiki/Q138861931"
       ]
     },
     {
@@ -113,6 +115,8 @@
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a { font-size: 13px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover, .nav-links a.active { color: var(--violet-mid); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--muted); border-radius: 2px; }
 
   .page-header {
     padding: 120px 48px 56px;
@@ -207,7 +211,21 @@
   @media (max-width: 600px) {
     nav { padding: 16px 20px; }
     .page-header, .doc-body { padding-left: 20px; padding-right: 20px; }
-    .nav-links { display: none; }
+    .nav-links { display: none; flex-direction: column; }
+    .hamburger { display: flex; }
+    nav.nav-open .nav-links {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 57px;
+      left: 0; right: 0;
+      background: rgba(250,250,248,0.97);
+      backdrop-filter: blur(12px);
+      padding: 20px 24px 24px;
+      gap: 16px;
+      border-bottom: 1px solid var(--rule);
+      z-index: 99;
+    }
     .official-doc { padding: 24px 20px; }
     .official-doc-footer { flex-direction: column; align-items: flex-start; }
     .official-doc-signatory { text-align: left; }
@@ -218,6 +236,9 @@
 
 <nav>
   <a class="nav-monogram" href="https://alexeisravello.com">ARJ</a>
+  <button class="hamburger" aria-label="Menú" onclick="this.closest('nav').classList.toggle('nav-open')">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links">
     <li><a href="https://alexeisravello.com">Inicio</a></li>
     <li><a href="about.html">Perfil</a></li>
@@ -379,7 +400,7 @@
   <p>
     <a href="https://alexeisravello.com">alexeisravello.com</a> ·
     ORCID <a href="https://orcid.org/0000-0003-4001-0142" target="_blank">0000-0003-4001-0142</a> ·
-    RENACYT P0368678 ·
+    <a href="https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=0000-0003-4001-0142" target="_blank">RENACYT P0368678</a> ·
     Expediente 2025/Q14155 ·
     <a href="equivalencia-doctor-universitat-barcelona.html">Equivalencia Doctorado UB</a>
   </p>

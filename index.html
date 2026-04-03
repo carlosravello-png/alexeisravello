@@ -53,7 +53,9 @@
       ],
       "sameAs": [
         "https://orcid.org/0000-0003-4001-0142",
-        "https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=0000-0003-4001-0142"
+        "https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=0000-0003-4001-0142",
+        "https://www.linkedin.com/in/alexis-ravello-07813127/",
+        "https://www.wikidata.org/wiki/Q138861931"
       ],
       "identifier": [
         {"@type":"PropertyValue","propertyID":"ORCID","value":"0000-0003-4001-0142"},
@@ -139,6 +141,23 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--violet-mid); }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--muted);
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
 
   /* ──────────── HERO ──────────── */
   .hero {
@@ -719,7 +738,21 @@
   /* ──────────── RESPONSIVE ──────────── */
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
-    nav .nav-links { display: none; }
+    nav .nav-links { display: none; flex-direction: column; }
+    .hamburger { display: flex; }
+    nav.nav-open .nav-links {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 57px;
+      left: 0; right: 0;
+      background: rgba(250,250,248,0.97);
+      backdrop-filter: blur(12px);
+      padding: 20px 24px 24px;
+      gap: 16px;
+      border-bottom: 1px solid var(--rule);
+      z-index: 99;
+    }
     .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
     .hero::before { display: none; }
     .hero-panel { display: none; }
@@ -739,6 +772,9 @@
 <!-- NAVIGATION -->
 <nav id="navbar">
   <div class="nav-monogram">ARJ</div>
+  <button class="hamburger" aria-label="Menú" onclick="this.closest('nav').classList.toggle('nav-open')">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links">
     <li><a href="#research">Investigación</a></li>
     <li><a href="#publications">Publicaciones</a></li>
@@ -777,11 +813,11 @@
       </p>
 
       <div class="hero-badges fade-up visible delay-4">
-        <span class="badge badge-renacyt">⬡ RENACYT P0368678 · Nivel VII</span>
+        <a href="https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=0000-0003-4001-0142" target="_blank" class="badge badge-renacyt">⬡ RENACYT P0368678 · Nivel VII</a>
         <a href="https://orcid.org/0000-0003-4001-0142" target="_blank" class="badge badge-orcid">
           ID 0000-0003-4001-0142
         </a>
-        <span class="badge badge-pucp">CAEN · PNP · PUCP</span>
+        <a href="https://www.caen.edu.pe" target="_blank" class="badge badge-pucp">CAEN · PNP · PUCP</a>
       </div>
     </div>
 
@@ -801,7 +837,7 @@
         <div class="profile-stats">
           <div class="pstat">
             <span class="pstat-label">Afiliación principal</span>
-            <span class="pstat-value"><span class="hi">CAEN</span></span>
+            <span class="pstat-value"><a href="https://www.caen.edu.pe" target="_blank" class="hi" style="text-decoration:none;color:inherit;">CAEN</a></span>
           </div>
           <div class="pstat">
             <span class="pstat-label">Grado</span>
@@ -810,7 +846,7 @@
           <div class="pstat">
             <span class="pstat-label">RENACYT</span>
             <span class="pstat-value">
-              <span class="hi">Nivel VII</span>
+              <a href="https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=0000-0003-4001-0142" target="_blank" class="hi" style="text-decoration:none;color:inherit;">Nivel VII</a>
               <br>
               <span class="active-pill" style="margin-top:4px;">
                 <span class="active-dot"></span> Activo · 2026
@@ -948,7 +984,8 @@
       </div>
       <div class="pub-meta">
         <a href="https://doi.org/10.31876/rcs.v29i4.41268" target="_blank" class="pub-doi">DOI: 10.31876/rcs.v29i4.41268</a>
-        <span class="pub-stat">📄 Dialnet · Ágora · Redalyc</span>
+        <a href="https://dialnet.unirioja.es/servlet/articulo?codigo=9497244" target="_blank" class="pub-doi">📄 Dialnet</a>
+        <a href="https://www.redalyc.org/articulo.oa?id=28077070006" target="_blank" class="pub-doi">Redalyc</a>
         <span class="pub-stat">🔬 Moderation · PLS-SEM</span>
       </div>
     </div>
@@ -1064,49 +1101,49 @@
 
     <!-- Fila 1: instituciones -->
     <div class="credentials-grid" style="margin-bottom:1px;">
-      <div class="cred-item fade-up">
+      <a href="https://www.caen.edu.pe" target="_blank" class="cred-item fade-up" style="text-decoration:none;color:inherit;">
         <div class="cred-logo">CAEN</div>
         <div class="cred-name">Afiliación Principal</div>
         <div class="cred-value">Centro de Altos<br>Estudios Nacionales</div>
         <div class="cred-sub">Docente Investigador</div>
         <div class="cred-badge-active"><span>●</span> Activo · 2026</div>
-      </div>
-      <div class="cred-item fade-up delay-1">
+      </a>
+      <a href="https://www.escpogra.edu.pe" target="_blank" class="cred-item fade-up delay-1" style="text-decoration:none;color:inherit;">
         <div class="cred-logo">PNP</div>
         <div class="cred-name">Afiliación</div>
         <div class="cred-value">Escuela de Posgrado<br>Policía Nacional del Perú</div>
         <div class="cred-sub">Docente Investigador</div>
         <div class="cred-badge-active"><span>●</span> Activo · 2026</div>
-      </div>
-      <div class="cred-item fade-up delay-2">
+      </a>
+      <a href="https://centrum.pucp.edu.pe" target="_blank" class="cred-item fade-up delay-2" style="text-decoration:none;color:inherit;">
         <div class="cred-logo">PUCP</div>
         <div class="cred-name">Afiliación</div>
         <div class="cred-value">Pontificia Universidad<br>Católica del Perú</div>
         <div class="cred-sub">CENTRUM Business School</div>
-      </div>
+      </a>
     </div>
 
     <!-- Fila 2: registros -->
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.08); border-radius:12px; overflow:hidden;">
-      <div class="cred-item fade-up delay-1">
+      <a href="https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=0000-0003-4001-0142" target="_blank" class="cred-item fade-up delay-1" style="text-decoration:none;color:inherit;">
         <div class="cred-logo">RENACYT</div>
         <div class="cred-name">CONCYTEC</div>
         <div class="cred-value">Código P0368678</div>
         <div class="cred-sub">Nivel VII</div>
         <div class="cred-badge-active"><span>●</span> Activo · 2026</div>
-      </div>
-      <div class="cred-item fade-up delay-2">
+      </a>
+      <a href="https://orcid.org/0000-0003-4001-0142" target="_blank" class="cred-item fade-up delay-2" style="text-decoration:none;color:inherit;">
         <div class="cred-logo">ORCID</div>
         <div class="cred-name">Identificador Académico</div>
         <div class="cred-value">0000-0003-<br>4001-0142</div>
         <div class="cred-sub">Perfil verificado</div>
-      </div>
-      <div class="cred-item fade-up delay-3">
+      </a>
+      <a href="https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=0000-0003-4001-0142" target="_blank" class="cred-item fade-up delay-3" style="text-decoration:none;color:inherit;">
         <div class="cred-logo">CTI</div>
         <div class="cred-name">Vitae CONCYTEC</div>
         <div class="cred-value">Perfil validado SUNEDU</div>
         <div class="cred-sub">Plataforma Nacional</div>
-      </div>
+      </a>
     </div>
 
   </div>
@@ -1132,7 +1169,7 @@
 <footer>
   <span class="footer-name">Alexeis Alberto Ravello Joo</span>
   <span>PhD · Psicólogo · Coach · CAEN · Esc. Posgrado PNP · CENTRUM PUCP · Lima, Perú</span>
-  <span>ORCID 0000-0003-4001-0142</span>
+  <a href="https://orcid.org/0000-0003-4001-0142" target="_blank" style="color:inherit;text-decoration:none;">ORCID 0000-0003-4001-0142</a>
   <span style="display:block;margin-top:8px;font-size:11px;">
     <a href="cv.html" style="color:inherit;text-decoration:none;margin-right:16px;">CV Académico</a>
     <a href="equivalencia-licenciatura-psicologia.html" style="color:inherit;text-decoration:none;margin-right:16px;">Equivalencia Psicología — España</a>
