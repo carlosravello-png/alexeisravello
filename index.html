@@ -643,6 +643,16 @@
     border-radius: 12px;
     overflow: hidden;
   }
+
+  /* Row 2 registros responsive grid */
+  .cred-registros {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+  }
   .cred-item {
     background: rgba(255,255,255,0.03);
     padding: 36px 28px;
@@ -766,6 +776,7 @@
     section { padding: 64px 24px; }
     .research-grid { grid-template-columns: 1fr; }
     .credentials-grid { grid-template-columns: repeat(2, 1fr); }
+    .cred-registros { grid-template-columns: repeat(2, 1fr); }
     footer { flex-direction: column; gap: 8px; text-align: center; }
     .pub-meta { flex-direction: column; align-items: flex-start; gap: 8px; }
     .pub-doi { display: block; width: 100%; text-align: center; padding: 12px 16px; font-size: 14px; border-radius: 8px; box-sizing: border-box; }
@@ -857,6 +868,7 @@
     .pub-card { padding: 20px; }
     .pub-title { font-size: 16px; }
     .credentials-grid { grid-template-columns: 1fr; }
+    .cred-registros { grid-template-columns: 1fr; border-radius: 8px; }
     .cred-item { padding: 20px 16px; }
     .contact-title { font-size: clamp(26px, 7vw, 38px); }
   }
@@ -1234,7 +1246,7 @@
     </div>
 
     <!-- Fila 2: registros -->
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.08); border-radius:12px; overflow:hidden;">
+    <div class="cred-registros">
       <a href="https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=0000-0003-4001-0142" target="_blank" class="cred-item fade-up delay-1" style="text-decoration:none;color:inherit;">
         <div class="cred-logo">RENACYT</div>
         <div class="cred-name">CONCYTEC</div>

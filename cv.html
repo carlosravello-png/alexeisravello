@@ -239,10 +239,13 @@
     padding: 22px 24px; background: white; border-radius: 8px;
     border: 0.5px solid var(--rule); margin-bottom: 16px;
     display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: start;
+    min-width: 0; overflow: hidden;
   }
+  .cred-card > div:first-child { min-width: 0; }
   .cred-name { font-weight: 500; color: var(--ink); font-size: 15px; margin-bottom: 4px; }
   .cred-issuer { font-size: 13px; color: var(--cambridge-mid); }
   .cred-date { font-size: 13px; color: var(--muted); white-space: nowrap; }
+  .cred-note { font-size: 13px; color: var(--muted); white-space: normal; word-break: break-word; overflow-wrap: anywhere; }
 
   table.cv-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
   table.cv-table th { text-align: left; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 0 12px 10px 0; border-bottom: 0.5px solid var(--rule); }
@@ -372,7 +375,7 @@
   <!-- DATOS GENERALES -->
   <section class="cv-section" id="datos" itemscope itemtype="https://schema.org/Person">
     <h2 class="cv-section-title">Datos Generales</h2>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr)); gap:16px;">
       <div>
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:4px;">Nombre completo</div>
         <div itemprop="name" style="font-weight:500">Alexeis Alberto Ravello Joo</div>
@@ -418,7 +421,7 @@
       <div>
         <div class="cred-name">Doctor en Administración Estratégica de Empresas</div>
         <div class="cred-issuer">Pontificia Universidad Católica del Perú — CENTRUM Business School</div>
-        <div class="cred-date" style="font-size:13px;color:var(--muted);margin-top:4px;">Tesis: <em>Moderación de la distancia de poder en la relación entre el empoderamiento psicológico y la resiliencia con el desempeño laboral</em></div>
+        <div class="cred-note" style="margin-top:4px;">Tesis: <em>Moderación de la distancia de poder en la relación entre el empoderamiento psicológico y la resiliencia con el desempeño laboral</em></div>
       </div>
       <div class="cred-date">04/10/2023</div>
     </div>
