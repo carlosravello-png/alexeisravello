@@ -235,6 +235,42 @@
     .official-doc-footer { flex-direction: column; align-items: flex-start; }
     .official-doc-signatory { text-align: left; }
   }
+
+  /* ──────────── SITE CREDITS ──────────── */
+  .site-credits {
+    text-align: center;
+    padding: 20px 24px 28px;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--muted, #7068A0);
+    border-top: 0.5px solid var(--rule, rgba(45,27,105,0.1));
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    line-height: 2;
+  }
+  .site-credits-sep { opacity: 0.35; }
+  .site-credits-name {
+    font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+    font-size: 12.5px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--violet-mid, #2D1B69);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .site-credits-name:hover { color: var(--cambridge, #2A5EA8); }
+  .site-credits-method {
+    font-weight: 500;
+    color: var(--violet-soft, #4A3290);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 9.5px;
+  }
 </style>
 </head>
 <body>
@@ -427,5 +463,15 @@
     });
   });
 </script>
+<div class="site-credits" role="contentinfo" aria-label="Créditos del sitio">
+  <span>Diseñado y desarrollado por</span>
+  <a href="mailto:carlosravello@gmail.com" class="site-credits-name" title="Contratar a Carlos Eduardo Ravello Joo — Diseño y desarrollo web">Carlos Eduardo Ravello Joo</a>
+  <span class="site-credits-sep">·</span>
+  <span class="site-credits-method">Modelo de Coherencia Dinámico</span>
+  <span class="site-credits-sep">·</span>
+  <span>M.C.D.</span>
+  <span class="site-credits-sep">·</span>
+  <span>© 2026</span>
+</div>
 </body>
 </html>

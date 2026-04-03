@@ -1,0 +1,67 @@
+/* ============================================================
+   HUMANS.TXT — alexeisravello.com
+   humanstxt.org · The humans behind this website
+   ============================================================ */
+
+
+/* DISEÑO Y DESARROLLO */
+
+  Nombre:       Carlos Eduardo Ravello Joo
+  Metodología:  Modelo de Coherencia Dinámico (M.C.D.)
+  Contacto:     carlosravello@gmail.com
+  Ubicación:    Lima, Perú
+
+  Arquitectura conceptual, diseño visual, desarrollo front-end,
+  optimización SEO técnica y estructuración semántica con
+  Schema.org / JSON-LD para posicionamiento en Knowledge Graph.
+
+  Disponible para proyectos de diseño y desarrollo web
+  de alto estándar académico, institucional y profesional.
+
+
+/* CONTENIDO ACADÉMICO */
+
+  Titular:      Alexeis Alberto Ravello Joo, Ph.D.
+  Cargo:        Docente Investigador · RENACYT Nivel VII (P0368678)
+  ORCID:        https://orcid.org/0000-0003-4001-0142
+  Wikidata:     https://www.wikidata.org/wiki/Q138861931
+
+
+/* TECNOLOGÍA */
+
+  HTML5 · CSS3 · JavaScript ES6+
+  Schema.org · JSON-LD · Open Graph · BreadcrumbList
+  GitHub Pages · Cloudflare (SSL Full, A records, CNAME)
+  Core Web Vitals · LCP · Structured Data · Sitemap XML
+  Diseño responsivo · Mobile-first · @media queries
+  Git · Version control
+
+
+/* CARACTERÍSTICAS DEL SITIO */
+
+  Última actualización:   Abril 2026
+  Idioma principal:       Español (es)
+  Codificación:           UTF-8
+  Doctype:                HTML5
+  Páginas:                5 (index, about, cv, ×2 equivalencias)
+  Structured data:        Person · ScholarlyArticle · Thesis ·
+                          EducationalOccupationalCredential ·
+                          BreadcrumbList · WebPage
+  Accesibilidad:          ARIA roles · roles semánticos · alt text
+  Rendimiento:            Imágenes externas · fetchpriority=high ·
+                          preload · fonts asíncronas
+
+
+/* PROPIEDAD INTELECTUAL */
+
+  El diseño, arquitectura, código fuente, estructura visual
+  y soluciones técnicas de este sitio web son propiedad
+  intelectual de Carlos Eduardo Ravello Joo (M.C.D.)
+
+  El contenido académico — publicaciones, credenciales, trayectoria
+  e identidad — es propiedad de Alexeis Alberto Ravello Joo, Ph.D.
+
+  © 2026 · Todos los derechos reservados.
+
+
+/* ============================================================ */
