@@ -169,7 +169,8 @@
     --sans:         'Outfit', system-ui, sans-serif;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { overflow-x: hidden; }
   body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
 
   nav {
@@ -746,7 +747,11 @@
       tocLinks.forEach(function(a){
         a.classList.toggle('toc-active', a.getAttribute('href') === '#'+current);
         if(a.getAttribute('href') === '#'+current){
-          a.scrollIntoView({block:'nearest', inline:'center', behavior:'smooth'});
+          // Scroll TOC chip into view horizontally only (avoid vertical page jump)
+          var toc = document.getElementById('cv-toc');
+          var aL = a.offsetLeft, aW = a.offsetWidth, tocW = toc.offsetWidth;
+          var target = aL - (tocW - aW) / 2;
+          toc.scrollTo({left: Math.max(0, target), behavior: 'smooth'});
         }
       });
     }

@@ -100,7 +100,8 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { overflow-x: hidden; }
   body {
     font-family: var(--sans);
     background: var(--cream);
@@ -428,6 +429,7 @@
 
   /* ──────────── RESEARCH AREAS ──────────── */
   .research-section {
+    overflow: hidden;
     background: var(--violet-ghost);
     max-width: 100%;
     padding: 96px 0;
@@ -588,7 +590,7 @@
   .thesis-card::after {
     content: 'PhD';
     position: absolute;
-    right: -12px; top: 32px;
+    right: -8px; top: 32px;
     font-family: var(--serif);
     font-size: 120px;
     font-weight: 600;
@@ -627,6 +629,7 @@
 
   /* ──────────── CREDENTIALS ──────────── */
   .credentials-section {
+    overflow: hidden;
     background: var(--violet-deep);
     max-width: 100%;
     padding: 80px 0;
@@ -839,6 +842,8 @@
   }
 
   @media (max-width: 600px) {
+    .pub-year-col { display: none; }
+    .pub-card { grid-template-columns: 1fr; }
     .hero { padding: 88px 20px 48px; }
     .hero-name { font-size: clamp(36px, 9vw, 52px); }
     .hero-title-main { font-size: 14px; }
